@@ -15,8 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        rootViewController = BaseViewController()
-        self.window = UIWindow.init()
+        let config = LoginUIComponents(components: [.email, .password, .button(label: "Log in")], forgetPassword: true)
+        let viewModel = LoginViewModel(config: config)
+        rootViewController = LoginViewController(viewModel: viewModel)
+        self.window = UIWindow()
         self.window?.bounds = UIScreen.main.bounds
         self.window?.rootViewController = rootViewController
         self.window?.backgroundColor = .white

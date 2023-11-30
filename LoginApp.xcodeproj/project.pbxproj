@@ -11,6 +11,11 @@
 		3A83049C0537360F9D0E2AF8 /* Pods_LoginApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D40ACEF11DB1FEE323165B55 /* Pods_LoginApp.framework */; };
 		669463083474236B00B66BBC /* Pods_LoginAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8777C44AB4F90724FFF7D1D /* Pods_LoginAppTests.framework */; };
 		A92B6B612B1871D1000846DF /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B6B602B1871D1000846DF /* UIView+Extensions.swift */; };
+		A92B6B672B188F98000846DF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B6B662B188F98000846DF /* LoginViewController.swift */; };
+		A92B6B692B18AFA9000846DF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B6B682B18AFA9000846DF /* LoginViewModel.swift */; };
+		A92B6B6B2B18B13C000846DF /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B6B6A2B18B13C000846DF /* LoginType.swift */; };
+		A92B6B6D2B18B6F7000846DF /* LoginType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B6B6C2B18B6F7000846DF /* LoginType+Extensions.swift */; };
+		A92B6B702B18BB4E000846DF /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B6B6F2B18BB4E000846DF /* TextField.swift */; };
 		A9A6337D2B1794CB00EAF6CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A6337C2B1794CB00EAF6CB /* AppDelegate.swift */; };
 		A9A6337F2B1794CB00EAF6CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A6337E2B1794CB00EAF6CB /* SceneDelegate.swift */; };
 		A9A633812B1794CB00EAF6CB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A633802B1794CB00EAF6CB /* BaseViewController.swift */; };
@@ -46,6 +51,11 @@
 		8457F620C6EB6B32E4542293 /* Pods-LoginAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginAppTests.debug.xcconfig"; path = "Target Support Files/Pods-LoginAppTests/Pods-LoginAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A8777C44AB4F90724FFF7D1D /* Pods_LoginAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoginAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92B6B602B1871D1000846DF /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		A92B6B662B188F98000846DF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A92B6B682B18AFA9000846DF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		A92B6B6A2B18B13C000846DF /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
+		A92B6B6C2B18B6F7000846DF /* LoginType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginType+Extensions.swift"; sourceTree = "<group>"; };
+		A92B6B6F2B18BB4E000846DF /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		A9A633792B1794CB00EAF6CB /* LoginApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9A6337C2B1794CB00EAF6CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9A6337E2B1794CB00EAF6CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +127,25 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		A92B6B652B188F7C000846DF /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				A92B6B662B188F98000846DF /* LoginViewController.swift */,
+				A92B6B682B18AFA9000846DF /* LoginViewModel.swift */,
+				A92B6B6A2B18B13C000846DF /* LoginType.swift */,
+				A92B6B6C2B18B6F7000846DF /* LoginType+Extensions.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		A92B6B6E2B18BB42000846DF /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				A92B6B6F2B18BB4E000846DF /* TextField.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		A9A633702B1794CA00EAF6CB = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +171,8 @@
 		A9A6337B2B1794CB00EAF6CB /* LoginApp */ = {
 			isa = PBXGroup;
 			children = (
+				A92B6B6E2B18BB42000846DF /* CustomView */,
+				A92B6B652B188F7C000846DF /* LoginView */,
 				A92B6B5F2B1871C1000846DF /* Extensions */,
 				A92B6B5E2B18452C000846DF /* BaseView */,
 				A9A6337C2B1794CB00EAF6CB /* AppDelegate.swift */,
@@ -421,9 +452,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A92B6B6B2B18B13C000846DF /* LoginType.swift in Sources */,
 				A9A633812B1794CB00EAF6CB /* BaseViewController.swift in Sources */,
 				A9A6337D2B1794CB00EAF6CB /* AppDelegate.swift in Sources */,
+				A92B6B6D2B18B6F7000846DF /* LoginType+Extensions.swift in Sources */,
+				A92B6B692B18AFA9000846DF /* LoginViewModel.swift in Sources */,
 				A92B6B612B1871D1000846DF /* UIView+Extensions.swift in Sources */,
+				A92B6B702B18BB4E000846DF /* TextField.swift in Sources */,
+				A92B6B672B188F98000846DF /* LoginViewController.swift in Sources */,
 				A9A6337F2B1794CB00EAF6CB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

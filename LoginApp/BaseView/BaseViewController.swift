@@ -26,6 +26,11 @@ class BaseViewController: UIViewController {
     
     func addContentView() {
         view.addSubview(contentStackView)
+        contentStackView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(24)
+            make.centerX.equalToSuperview()
+        }
     }
     
     func addLogo() {
