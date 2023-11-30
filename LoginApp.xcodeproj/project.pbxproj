@@ -24,6 +24,7 @@
 		A9A633942B1794CC00EAF6CB /* LoginAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A633932B1794CC00EAF6CB /* LoginAppTests.swift */; };
 		A9A6339E2B1794CC00EAF6CB /* LoginAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A6339D2B1794CC00EAF6CB /* LoginAppUITests.swift */; };
 		A9A633A02B1794CC00EAF6CB /* LoginAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A6339F2B1794CC00EAF6CB /* LoginAppUITestsLaunchTests.swift */; };
+		A9F8B3DF2B18C20F00E415D5 /* LoginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = A9F8B3DE2B18C20F00E415D5 /* LoginResponse.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		A9A633992B1794CC00EAF6CB /* LoginAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9A6339D2B1794CC00EAF6CB /* LoginAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAppUITests.swift; sourceTree = "<group>"; };
 		A9A6339F2B1794CC00EAF6CB /* LoginAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A9F8B3DE2B18C20F00E415D5 /* LoginResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginResponse.json; sourceTree = "<group>"; };
 		B6F833C6E25D6607C7475135 /* Pods-LoginApp-LoginAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginApp-LoginAppUITests.release.xcconfig"; path = "Target Support Files/Pods-LoginApp-LoginAppUITests/Pods-LoginApp-LoginAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D40ACEF11DB1FEE323165B55 /* Pods_LoginApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoginApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8D816F24EC7761DB13CACA /* Pods-LoginApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginApp.debug.xcconfig"; path = "Target Support Files/Pods-LoginApp/Pods-LoginApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				A9A633852B1794CC00EAF6CB /* Assets.xcassets */,
 				A9A633872B1794CC00EAF6CB /* LaunchScreen.storyboard */,
 				A9A6338A2B1794CC00EAF6CB /* Info.plist */,
+				A9F8B3DE2B18C20F00E415D5 /* LoginResponse.json */,
 			);
 			path = LoginApp;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9A633892B1794CC00EAF6CB /* LaunchScreen.storyboard in Resources */,
+				A9F8B3DF2B18C20F00E415D5 /* LoginResponse.json in Resources */,
 				A9A633862B1794CC00EAF6CB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
