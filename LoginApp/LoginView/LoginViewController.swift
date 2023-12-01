@@ -26,6 +26,11 @@ class LoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        clearUserData()
+    }
+    
+    func clearUserData() {
+        viewModel.clearOldTokenData()
     }
     
     func setupUI() {
@@ -51,8 +56,6 @@ class LoginViewController: BaseViewController {
                     return
                 }
                 self.passwordTextField = passwordTextField
-            default:
-                break
             }
             contentStackView.addArrangedSubview(dynamicElement)
         }
