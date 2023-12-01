@@ -9,8 +9,10 @@ import Foundation
 import Moya
 
 public enum Endpoint {
+    //TODO: - clientId and secret can put in xcconfig when we have more envs
     static let clientId = "ofzl-2h5ympKa0WqqTzqlVJUiRsxmXQmt5tkgrlWnOE"
     static let clientSecret = "lMQb900L-mTeU-FVTCwyhjsfBwRCxwwbCitPob96cuU"
+    
     case login(email: String, password: String)
     case loginWithToken(token: String)
     case logout(token: String)

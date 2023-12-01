@@ -26,6 +26,12 @@
 		A9A633A02B1794CC00EAF6CB /* LoginAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A6339F2B1794CC00EAF6CB /* LoginAppUITestsLaunchTests.swift */; };
 		A9AAA94F2B19DDB30056105D /* AutoRefreshToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA94E2B19DDB30056105D /* AutoRefreshToken.swift */; };
 		A9AAA9512B19ECC60056105D /* SurveyResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = A9AAA9502B19ECC60056105D /* SurveyResponse.json */; };
+		A9AAA9562B1A1F7D0056105D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA9552B1A1F7D0056105D /* HomeViewController.swift */; };
+		A9AAA95A2B1A21520056105D /* SurveyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA9592B1A21520056105D /* SurveyResponse.swift */; };
+		A9AAA95D2B1A21AE0056105D /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA95C2B1A21AE0056105D /* OnboardingPageView.swift */; };
+		A9AAA95F2B1A21E10056105D /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA95E2B1A21E10056105D /* OnboardingPage.swift */; };
+		A9AAA9612B1A24AA0056105D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA9602B1A24AA0056105D /* HomeViewModel.swift */; };
+		A9AAA9632B1A2A630056105D /* SurveyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA9622B1A2A630056105D /* SurveyService.swift */; };
 		A9F8B3DF2B18C20F00E415D5 /* LoginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = A9F8B3DE2B18C20F00E415D5 /* LoginResponse.json */; };
 		A9F8B3E22B19849A00E415D5 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F8B3E12B19849A00E415D5 /* LoginService.swift */; };
 		A9F8B3E42B1984E000E415D5 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F8B3E32B1984E000E415D5 /* Endpoint.swift */; };
@@ -80,6 +86,12 @@
 		A9A6339F2B1794CC00EAF6CB /* LoginAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A9AAA94E2B19DDB30056105D /* AutoRefreshToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshToken.swift; sourceTree = "<group>"; };
 		A9AAA9502B19ECC60056105D /* SurveyResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SurveyResponse.json; sourceTree = "<group>"; };
+		A9AAA9552B1A1F7D0056105D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A9AAA9592B1A21520056105D /* SurveyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyResponse.swift; sourceTree = "<group>"; };
+		A9AAA95C2B1A21AE0056105D /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
+		A9AAA95E2B1A21E10056105D /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
+		A9AAA9602B1A24AA0056105D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A9AAA9622B1A2A630056105D /* SurveyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyService.swift; sourceTree = "<group>"; };
 		A9F8B3DE2B18C20F00E415D5 /* LoginResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginResponse.json; sourceTree = "<group>"; };
 		A9F8B3E12B19849A00E415D5 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		A9F8B3E32B1984E000E415D5 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -192,6 +204,8 @@
 		A9A6337B2B1794CB00EAF6CB /* LoginApp */ = {
 			isa = PBXGroup;
 			children = (
+				A9AAA9582B1A20EE0056105D /* Model */,
+				A9AAA9542B1A1F5F0056105D /* HomeView */,
 				A9F8B3E02B19848800E415D5 /* API */,
 				A92B6B6E2B18BB42000846DF /* CustomView */,
 				A92B6B652B188F7C000846DF /* LoginView */,
@@ -232,6 +246,34 @@
 			path = AutoRefreshToken;
 			sourceTree = "<group>";
 		};
+		A9AAA9542B1A1F5F0056105D /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				A9AAA95B2B1A21A00056105D /* OnboardingPageView */,
+				A9AAA9552B1A1F7D0056105D /* HomeViewController.swift */,
+				A9AAA9602B1A24AA0056105D /* HomeViewModel.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		A9AAA9582B1A20EE0056105D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A9F8B3E72B1986DE00E415D5 /* LoginResponse.swift */,
+				A9AAA9592B1A21520056105D /* SurveyResponse.swift */,
+				A9AAA95E2B1A21E10056105D /* OnboardingPage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A9AAA95B2B1A21A00056105D /* OnboardingPageView */ = {
+			isa = PBXGroup;
+			children = (
+				A9AAA95C2B1A21AE0056105D /* OnboardingPageView.swift */,
+			);
+			path = OnboardingPageView;
+			sourceTree = "<group>";
+		};
 		A9F8B3E02B19848800E415D5 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,7 +281,7 @@
 				A9F8B3EC2B19920800E415D5 /* Keychain */,
 				A9F8B3E12B19849A00E415D5 /* LoginService.swift */,
 				A9F8B3E32B1984E000E415D5 /* Endpoint.swift */,
-				A9F8B3E72B1986DE00E415D5 /* LoginResponse.swift */,
+				A9AAA9622B1A2A630056105D /* SurveyService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -520,15 +562,21 @@
 			files = (
 				A9F8B3E22B19849A00E415D5 /* LoginService.swift in Sources */,
 				A92B6B6B2B18B13C000846DF /* LoginType.swift in Sources */,
+				A9AAA95F2B1A21E10056105D /* OnboardingPage.swift in Sources */,
+				A9AAA9612B1A24AA0056105D /* HomeViewModel.swift in Sources */,
 				A9F8B3E82B1986DE00E415D5 /* LoginResponse.swift in Sources */,
+				A9AAA95A2B1A21520056105D /* SurveyResponse.swift in Sources */,
+				A9AAA9632B1A2A630056105D /* SurveyService.swift in Sources */,
 				A9A633812B1794CB00EAF6CB /* BaseViewController.swift in Sources */,
 				A9A6337D2B1794CB00EAF6CB /* AppDelegate.swift in Sources */,
+				A9AAA95D2B1A21AE0056105D /* OnboardingPageView.swift in Sources */,
 				A92B6B6D2B18B6F7000846DF /* LoginType+Extensions.swift in Sources */,
 				A92B6B692B18AFA9000846DF /* LoginViewModel.swift in Sources */,
 				A92B6B612B1871D1000846DF /* UIView+Extensions.swift in Sources */,
 				A9F8B3EE2B19921D00E415D5 /* TokenManager.swift in Sources */,
 				A92B6B702B18BB4E000846DF /* TextField.swift in Sources */,
 				A9F8B3F02B19A13000E415D5 /* UIViewController+Extensions.swift in Sources */,
+				A9AAA9562B1A1F7D0056105D /* HomeViewController.swift in Sources */,
 				A92B6B672B188F98000846DF /* LoginViewController.swift in Sources */,
 				A9A6337F2B1794CB00EAF6CB /* SceneDelegate.swift in Sources */,
 				A9AAA94F2B19DDB30056105D /* AutoRefreshToken.swift in Sources */,

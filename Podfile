@@ -10,6 +10,7 @@ target 'LoginApp' do
   pod 'SnapKit', '~> 5.6.0'
   pod 'Moya', '~> 15.0'
   pod 'KeychainSwift'
+  pod 'Kingfisher'
   
   target 'LoginAppTests' do
     inherit! :search_paths

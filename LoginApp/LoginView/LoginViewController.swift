@@ -72,7 +72,9 @@ class LoginViewController: BaseViewController {
             }
             switch result {
             case .success:
-                self.showAlert(title: "Nimble", message: "Login success")
+                let homeViewController = HomeViewController()
+                homeViewController.modalPresentationStyle = .fullScreen
+                self.present(homeViewController, animated: true)
             case .failure(let error):
                 guard let message = (error as? NSError)?.userInfo["message"] else {
                     return
