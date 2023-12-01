@@ -14,6 +14,7 @@ public enum Endpoint {
     case login(email: String, password: String)
     case loginWithToken(token: String)
     case logout(token: String)
+    case surveys(page: Int?, size: Int?)
 }
 
 extension Endpoint: TargetType {
@@ -27,11 +28,19 @@ extension Endpoint: TargetType {
             return "/oauth/token"
         case .logout:
             return "/oauth/revoke"
+        case .surveys:
+            return "surveys"
+            
         }
     }
     
     public var method: Moya.Method {
-        .post
+        switch self {
+        case .surveys:
+            return .get
+        default:
+            return .post
+        }
     }
     
     public var task: Moya.Task {
@@ -55,12 +64,26 @@ extension Endpoint: TargetType {
                                                    "client_id": Self.clientId,
                                                    "client_secret": Self.clientSecret],
                                       encoding: JSONEncoding.default)
+        case .surveys(let page, let size):
+            var params: [String: Any] = [:]
+            if let page {
+                params["page[number]"] = page
+            }
+            
+            if let size {
+                params["page[size]"] = size
+            }
+            
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         }
         
     }
     
     public var headers: [String : String]? {
-        nil
+        if let accessToken = TokenManager.shared.getAccessToken() {
+            return ["Authorization": "Bearer \(accessToken)"]
+        }
+        return nil
     }
     
     public var sampleData: Data {
@@ -70,6 +93,8 @@ extension Endpoint: TargetType {
             fileName = "LogoutResponse"
         case .login, .loginWithToken:
             fileName = "LoginResponse"
+        case .surveys:
+            fileName = "SurveyResponse"
         }
         guard let fileName else {
             return Data()
