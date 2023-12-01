@@ -34,6 +34,8 @@ extension LoginType {
         textField.placeholder = placeHolder
         textField.backgroundColor = .gray
         textField.textColor = .white
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.font = .boldSystemFont(ofSize: 17)
         textField.attributedPlaceholder = NSAttributedString(
             string: placeHolder,

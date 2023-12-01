@@ -11,6 +11,8 @@ import SnapKit
 
 class LoginViewController: BaseViewController {
     var viewModel: LoginViewModel
+    var emailTextField: UITextField!
+    var passwordTextField: UITextField!
     
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
@@ -33,13 +35,47 @@ class LoginViewController: BaseViewController {
             let dynamicElement = component.created()
             switch component {
             case .button:
+                guard let loginButton = dynamicElement as? UIButton else {
+                    return
+                }
+                loginButton.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
                 break
+            case .email:
+                guard let emailTextField = dynamicElement as? UITextField else {
+                    return
+                }
+                self.emailTextField = emailTextField
+                
             case .password:
-                break
+                guard let passwordTextField = dynamicElement as? UITextField else {
+                    return
+                }
+                self.passwordTextField = passwordTextField
             default:
                 break
             }
             contentStackView.addArrangedSubview(dynamicElement)
+        }
+    }
+    
+    @objc func loginTapped() {
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text else {
+            return
+        }
+        viewModel.login(email: email, password: password) { [weak self] result in
+            guard let self else {
+                return
+            }
+            switch result {
+            case .success:
+                self.showAlert(title: "Nimble", message: "Login success")
+            case .failure(let error):
+                guard let message = (error as? NSError)?.userInfo["message"] else {
+                    return
+                }
+                self.showAlert(title: "Login failed", message: "\(message)")
+            }
         }
     }
 }
