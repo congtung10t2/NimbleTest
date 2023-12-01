@@ -23,7 +23,7 @@ class LoginViewModel {
     private var tokenManager: TokenManaging
     
     init(config: LoginUIComponentsProtocol = LoginUIComponents(components: [.email, .password, .button(label: "Log in")], forgetPassword: true),
-         tokenManager: TokenManaging = TokenManager(),
+         tokenManager: TokenManaging = TokenManager.shared,
          loginService: LoginService = LoginServiceImplement()) {
         self.configuration = config
         self.loginService = loginService
@@ -53,6 +53,10 @@ class LoginViewModel {
         case .failure(let error):
             completion(.failure(error))
         }
+    }
+    
+    func clearOldTokenData() {
+        tokenManager.clearTokens()
     }
     
     func login(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void) {

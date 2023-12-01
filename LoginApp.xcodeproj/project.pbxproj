@@ -24,6 +24,7 @@
 		A9A633942B1794CC00EAF6CB /* LoginAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A633932B1794CC00EAF6CB /* LoginAppTests.swift */; };
 		A9A6339E2B1794CC00EAF6CB /* LoginAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A6339D2B1794CC00EAF6CB /* LoginAppUITests.swift */; };
 		A9A633A02B1794CC00EAF6CB /* LoginAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A6339F2B1794CC00EAF6CB /* LoginAppUITestsLaunchTests.swift */; };
+		A9AAA94F2B19DDB30056105D /* AutoRefreshToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA94E2B19DDB30056105D /* AutoRefreshToken.swift */; };
 		A9F8B3DF2B18C20F00E415D5 /* LoginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = A9F8B3DE2B18C20F00E415D5 /* LoginResponse.json */; };
 		A9F8B3E22B19849A00E415D5 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F8B3E12B19849A00E415D5 /* LoginService.swift */; };
 		A9F8B3E42B1984E000E415D5 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F8B3E32B1984E000E415D5 /* Endpoint.swift */; };
@@ -76,6 +77,7 @@
 		A9A633992B1794CC00EAF6CB /* LoginAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9A6339D2B1794CC00EAF6CB /* LoginAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAppUITests.swift; sourceTree = "<group>"; };
 		A9A6339F2B1794CC00EAF6CB /* LoginAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A9AAA94E2B19DDB30056105D /* AutoRefreshToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshToken.swift; sourceTree = "<group>"; };
 		A9F8B3DE2B18C20F00E415D5 /* LoginResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginResponse.json; sourceTree = "<group>"; };
 		A9F8B3E12B19849A00E415D5 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		A9F8B3E32B1984E000E415D5 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -220,9 +222,18 @@
 			path = LoginAppUITests;
 			sourceTree = "<group>";
 		};
+		A9AAA94D2B19DD9A0056105D /* AutoRefreshToken */ = {
+			isa = PBXGroup;
+			children = (
+				A9AAA94E2B19DDB30056105D /* AutoRefreshToken.swift */,
+			);
+			path = AutoRefreshToken;
+			sourceTree = "<group>";
+		};
 		A9F8B3E02B19848800E415D5 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				A9AAA94D2B19DD9A0056105D /* AutoRefreshToken */,
 				A9F8B3EC2B19920800E415D5 /* Keychain */,
 				A9F8B3E12B19849A00E415D5 /* LoginService.swift */,
 				A9F8B3E32B1984E000E415D5 /* Endpoint.swift */,
@@ -516,6 +527,7 @@
 				A9F8B3F02B19A13000E415D5 /* UIViewController+Extensions.swift in Sources */,
 				A92B6B672B188F98000846DF /* LoginViewController.swift in Sources */,
 				A9A6337F2B1794CB00EAF6CB /* SceneDelegate.swift in Sources */,
+				A9AAA94F2B19DDB30056105D /* AutoRefreshToken.swift in Sources */,
 				A9F8B3E42B1984E000E415D5 /* Endpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
