@@ -59,6 +59,8 @@ class HomeViewController: UIViewController {
         return blurView
     }()
     
+    private var isRefreshing = false
+    
     private var onboardingPages: [OnboardingPage] = []
     
     let viewModel: HomeViewModel
@@ -80,6 +82,10 @@ class HomeViewController: UIViewController {
     
     func setupData() {
         showLoading()
+        fetchData()
+    }
+    
+    func fetchData() {
         viewModel.fetchSurveyList { [weak self] result in
             guard let self else {
                 return
@@ -121,6 +127,32 @@ class HomeViewController: UIViewController {
         addLogoutButton()
         addSurveyButton()
         addBlurView()
+        addPullToRefresh()
+    }
+
+    private func addPullToRefresh() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        view.addGestureRecognizer(panGesture)
+    }
+    
+    @objc private func handlePan(_ gesture: UIPanGestureRecognizer) {
+        let offsetY = gesture.translation(in: view).y
+        switch gesture.state {
+        case .ended:
+            if offsetY > 50 && !isRefreshing {
+                performRefresh()
+            }
+            
+        default:
+            break
+        }
+    }
+    private func performRefresh() {
+        isRefreshing = true
+        showLoading()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.fetchData()
+        }
     }
     
     private func addCollection() {
@@ -193,6 +225,7 @@ class HomeViewController: UIViewController {
     
     func hideLoading() {
         dimView.isHidden = true
+        isRefreshing = false
         loadingIndicator.stopAnimating()
     }
     
