@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-enum Endpoint {
+public enum ApiRouter {
     //TODO: - baseUrl, clientId and secret can put in xcconfig when we have more envs
     static let clientId = "ofzl-2h5ympKa0WqqTzqlVJUiRsxmXQmt5tkgrlWnOE"
     static let clientSecret = "lMQb900L-mTeU-FVTCwyhjsfBwRCxwwbCitPob96cuU"
@@ -20,7 +20,7 @@ enum Endpoint {
     case forgetPassword(email: String)
 }
 
-extension Endpoint: TargetType {
+extension ApiRouter: TargetType {
     public var baseURL: URL {
         URL(string: "https://survey-api.nimblehq.co/api/v1")!
     }
@@ -122,7 +122,7 @@ extension Endpoint: TargetType {
     
 }
 
-private extension Endpoint {
+private extension ApiRouter {
     static func getSampleData(fileName: String) -> Data {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: "json"),
               let data = try? Data(contentsOf: url) else {
