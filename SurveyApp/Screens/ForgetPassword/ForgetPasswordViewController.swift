@@ -28,6 +28,7 @@ class ForgetPasswordViewController: BaseViewController {
     func setupUI() {
         contentStackView.distribution = .fillEqually
         contentStackView.alignment = .fill
+        /// This one is trying to apply factory pattern. seem overkill for this but just to show how this pattern can design flexible UI
         viewModel.configuration.components.forEach { component in
             let dynamicElement = component.created()
             switch component {
