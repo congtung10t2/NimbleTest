@@ -197,8 +197,8 @@
 			children = (
 				A99F1ABA2B1B96BE00E9A3BA /* Readme.md */,
 				A9A6337B2B1794CB00EAF6CB /* SurveyApp */,
-				A9A633922B1794CC00EAF6CB /* LoginAppTests */,
-				A9A6339C2B1794CC00EAF6CB /* LoginAppUITests */,
+				A9A633922B1794CC00EAF6CB /* SurveyTests */,
+				A9A6339C2B1794CC00EAF6CB /* SurveyUITests */,
 				A9A6337A2B1794CB00EAF6CB /* Products */,
 				C71CA60B09DE1C973852415F /* Pods */,
 				C3F99B2AEE38ADAE8FF2254F /* Frameworks */,
@@ -230,7 +230,7 @@
 			path = SurveyApp;
 			sourceTree = "<group>";
 		};
-		A9A633922B1794CC00EAF6CB /* LoginAppTests */ = {
+		A9A633922B1794CC00EAF6CB /* SurveyTests */ = {
 			isa = PBXGroup;
 			children = (
 				A9A633932B1794CC00EAF6CB /* LoginAppTests.swift */,
@@ -241,16 +241,16 @@
 				A9AAA97F2B1B89A80056105D /* MockTokenManager.swift */,
 				A99F1AB82B1B8F8800E9A3BA /* HomeViewModelTests.swift */,
 			);
-			path = LoginAppTests;
+			path = SurveyTests;
 			sourceTree = "<group>";
 		};
-		A9A6339C2B1794CC00EAF6CB /* LoginAppUITests */ = {
+		A9A6339C2B1794CC00EAF6CB /* SurveyUITests */ = {
 			isa = PBXGroup;
 			children = (
 				A9A6339D2B1794CC00EAF6CB /* LoginAppUITests.swift */,
 				A9A6339F2B1794CC00EAF6CB /* LoginAppUITestsLaunchTests.swift */,
 			);
-			path = LoginAppUITests;
+			path = SurveyUITests;
 			sourceTree = "<group>";
 		};
 		A9AAA94D2B19DD9A0056105D /* AutoRefreshToken */ = {
