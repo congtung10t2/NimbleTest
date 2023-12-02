@@ -66,7 +66,7 @@ class AutoRefreshToken {
             case .failure(let error):
                 retryCount = retryCount + 1
                 debugPrint(error)
-            case .loginError(let error):
+            case .errorResponse(let error):
                 retryCount = retryCount + 1
                 let message = error.errors.first?.detail ?? ""
                 let error = NSError(domain: "", code: 0, userInfo: ["message": message])

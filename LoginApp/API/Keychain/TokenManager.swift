@@ -22,7 +22,6 @@ class TokenManager: TokenManaging {
     private init() {}
     
     private let keychain = KeychainSwift()
-    private var expirationDate: Date?
     
     private let accessTokenKey = "AccessToken"
     private let refreshTokenKey = "RefreshToken"
@@ -31,12 +30,12 @@ class TokenManager: TokenManaging {
     func saveTokens(accessToken: String, refreshToken: String, expiresIn: TimeInterval, createdAt: TimeInterval) {
         keychain.set(accessToken, forKey: accessTokenKey)
         keychain.set(refreshToken, forKey: refreshTokenKey)
-        UserDefaults.standard.set(expiresIn, forKey: accessTokenExpirationKey)
-        self.expirationDate = Date(timeIntervalSince1970: createdAt + expiresIn)
+        let expirationDate = Date(timeIntervalSince1970: createdAt + expiresIn)
+        UserDefaults.standard.set(expirationDate, forKey: accessTokenExpirationKey)
     }
     
     func getAccessToken() -> String? {
-        guard let expirationDate = expirationDate, expirationDate > Date() else {
+        guard let expirationDate = UserDefaults.standard.object(forKey: accessTokenExpirationKey) as? Date, expirationDate > Date() else {
             return nil
         }
         return keychain.get(accessTokenKey)
