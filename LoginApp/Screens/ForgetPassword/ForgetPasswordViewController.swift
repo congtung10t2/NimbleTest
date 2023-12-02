@@ -48,7 +48,7 @@ class ForgetPasswordViewController: BaseViewController {
             }
             contentStackView.addArrangedSubview(dynamicElement)
         }
-        addBlurView()
+        addDimView()
         hideLoading()
     }
     

@@ -47,14 +47,15 @@ class HomeViewController: UIViewController {
     
     private let loadingIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
-        indicator.color = .gray
+        indicator.color = .white
         indicator.hidesWhenStopped = true
         return indicator
     }()
     
-    private let blurView: UIVisualEffectView = {
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurView = UIVisualEffectView(effect: blurEffect)
+    private let dimView: UIView = {
+        let blurView = UIView()
+        blurView.backgroundColor = .black
+        blurView.alpha = 0.2
         return blurView
     }()
     
@@ -117,6 +118,7 @@ class HomeViewController: UIViewController {
         addBackground()
         addCollection()
         addPageControl()
+        addLogoutButton()
         addSurveyButton()
         addBlurView()
     }
@@ -166,13 +168,13 @@ class HomeViewController: UIViewController {
     }
     
     private func addBlurView() {
-        view.addSubview(blurView)
-        blurView.snp.makeConstraints { make in
+        view.addSubview(dimView)
+        dimView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
         // Add loading indicator to the blur view
-        blurView.contentView.addSubview(loadingIndicator)
+        view.addSubview(loadingIndicator)
         loadingIndicator.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
@@ -185,12 +187,12 @@ class HomeViewController: UIViewController {
     }
     
     func showLoading() {
-        blurView.isHidden = false
+        dimView.isHidden = false
         loadingIndicator.startAnimating()
     }
     
     func hideLoading() {
-        blurView.isHidden = true
+        dimView.isHidden = true
         loadingIndicator.stopAnimating()
     }
     
