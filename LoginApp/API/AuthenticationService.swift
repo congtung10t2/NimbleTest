@@ -17,10 +17,10 @@ protocol AuthenticationService {
 }
 
 class AuthenticationImplement: AuthenticationService {
-    var apiProvider: MoyaProvider<Endpoint>
+    var apiProvider: MoyaProvider<ApiRouter>
     var decoder: JSONDecoder
     
-    init(provider: MoyaProvider<Endpoint> = MoyaProvider<Endpoint>(),
+    init(provider: MoyaProvider<ApiRouter> = MoyaProvider<ApiRouter>(),
          decoder: JSONDecoder = JSONDecoder()) {
         self.apiProvider = provider
         self.decoder = decoder

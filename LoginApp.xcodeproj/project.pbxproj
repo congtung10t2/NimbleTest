@@ -37,9 +37,14 @@
 		A9AAA96E2B1B3D940056105D /* ForgetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA96D2B1B3D940056105D /* ForgetPasswordViewModel.swift */; };
 		A9AAA9722B1B684B0056105D /* ForgetPassword.json in Resources */ = {isa = PBXBuildFile; fileRef = A9AAA9712B1B684B0056105D /* ForgetPassword.json */; };
 		A9AAA9742B1B68A20056105D /* ForgetPasswordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA9732B1B68A20056105D /* ForgetPasswordResponse.swift */; };
+		A9AAA9762B1B7C020056105D /* MockKeychainSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA9752B1B7C020056105D /* MockKeychainSwift.swift */; };
+		A9AAA9782B1B7E8B0056105D /* TokenManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA9772B1B7E8B0056105D /* TokenManagerTests.swift */; };
+		A9AAA97A2B1B803F0056105D /* LoginResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA9792B1B803F0056105D /* LoginResponseTests.swift */; };
+		A9AAA97E2B1B89320056105D /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA97D2B1B89320056105D /* LoginViewModelTests.swift */; };
+		A9AAA9802B1B89A80056105D /* MockTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA97F2B1B89A80056105D /* MockTokenManager.swift */; };
 		A9F8B3DF2B18C20F00E415D5 /* LoginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = A9F8B3DE2B18C20F00E415D5 /* LoginResponse.json */; };
 		A9F8B3E22B19849A00E415D5 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F8B3E12B19849A00E415D5 /* AuthenticationService.swift */; };
-		A9F8B3E42B1984E000E415D5 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F8B3E32B1984E000E415D5 /* Endpoint.swift */; };
+		A9F8B3E42B1984E000E415D5 /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F8B3E32B1984E000E415D5 /* ApiRouter.swift */; };
 		A9F8B3E62B19869100E415D5 /* LoginError.json in Resources */ = {isa = PBXBuildFile; fileRef = A9F8B3E52B19869100E415D5 /* LoginError.json */; };
 		A9F8B3E82B1986DE00E415D5 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F8B3E72B1986DE00E415D5 /* LoginResponse.swift */; };
 		A9F8B3EA2B198D6000E415D5 /* LogoutResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = A9F8B3E92B198D6000E415D5 /* LogoutResponse.json */; };
@@ -102,9 +107,14 @@
 		A9AAA96D2B1B3D940056105D /* ForgetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewModel.swift; sourceTree = "<group>"; };
 		A9AAA9712B1B684B0056105D /* ForgetPassword.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ForgetPassword.json; sourceTree = "<group>"; };
 		A9AAA9732B1B68A20056105D /* ForgetPasswordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordResponse.swift; sourceTree = "<group>"; };
+		A9AAA9752B1B7C020056105D /* MockKeychainSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockKeychainSwift.swift; sourceTree = "<group>"; };
+		A9AAA9772B1B7E8B0056105D /* TokenManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManagerTests.swift; sourceTree = "<group>"; };
+		A9AAA9792B1B803F0056105D /* LoginResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseTests.swift; sourceTree = "<group>"; };
+		A9AAA97D2B1B89320056105D /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		A9AAA97F2B1B89A80056105D /* MockTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTokenManager.swift; sourceTree = "<group>"; };
 		A9F8B3DE2B18C20F00E415D5 /* LoginResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginResponse.json; sourceTree = "<group>"; };
 		A9F8B3E12B19849A00E415D5 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
-		A9F8B3E32B1984E000E415D5 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		A9F8B3E32B1984E000E415D5 /* ApiRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRouter.swift; sourceTree = "<group>"; };
 		A9F8B3E52B19869100E415D5 /* LoginError.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoginError.json; sourceTree = "<group>"; };
 		A9F8B3E72B1986DE00E415D5 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		A9F8B3E92B198D6000E415D5 /* LogoutResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LogoutResponse.json; sourceTree = "<group>"; };
@@ -230,6 +240,11 @@
 			isa = PBXGroup;
 			children = (
 				A9A633932B1794CC00EAF6CB /* LoginAppTests.swift */,
+				A9AAA9752B1B7C020056105D /* MockKeychainSwift.swift */,
+				A9AAA9772B1B7E8B0056105D /* TokenManagerTests.swift */,
+				A9AAA9792B1B803F0056105D /* LoginResponseTests.swift */,
+				A9AAA97D2B1B89320056105D /* LoginViewModelTests.swift */,
+				A9AAA97F2B1B89A80056105D /* MockTokenManager.swift */,
 			);
 			path = LoginAppTests;
 			sourceTree = "<group>";
@@ -334,7 +349,7 @@
 				A9AAA94D2B19DD9A0056105D /* AutoRefreshToken */,
 				A9F8B3EC2B19920800E415D5 /* Keychain */,
 				A9F8B3E12B19849A00E415D5 /* AuthenticationService.swift */,
-				A9F8B3E32B1984E000E415D5 /* Endpoint.swift */,
+				A9F8B3E32B1984E000E415D5 /* ApiRouter.swift */,
 				A9AAA9622B1A2A630056105D /* SurveyService.swift */,
 			);
 			path = API;
@@ -640,7 +655,7 @@
 				A9A6337F2B1794CB00EAF6CB /* SceneDelegate.swift in Sources */,
 				A9AAA94F2B19DDB30056105D /* AutoRefreshToken.swift in Sources */,
 				A9AAA96E2B1B3D940056105D /* ForgetPasswordViewModel.swift in Sources */,
-				A9F8B3E42B1984E000E415D5 /* Endpoint.swift in Sources */,
+				A9F8B3E42B1984E000E415D5 /* ApiRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,7 +663,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9AAA97E2B1B89320056105D /* LoginViewModelTests.swift in Sources */,
 				A9A633942B1794CC00EAF6CB /* LoginAppTests.swift in Sources */,
+				A9AAA9762B1B7C020056105D /* MockKeychainSwift.swift in Sources */,
+				A9AAA97A2B1B803F0056105D /* LoginResponseTests.swift in Sources */,
+				A9AAA9782B1B7E8B0056105D /* TokenManagerTests.swift in Sources */,
+				A9AAA9802B1B89A80056105D /* MockTokenManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

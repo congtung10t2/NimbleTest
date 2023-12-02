@@ -13,10 +13,10 @@ protocol SurveyService {
 }
 
 class SurveyServiceImplement: SurveyService {
-    var apiProvider: MoyaProvider<Endpoint>
+    var apiProvider: MoyaProvider<ApiRouter>
     var decoder: JSONDecoder
     
-    init(provider: MoyaProvider<Endpoint> = MoyaProvider<Endpoint>(stubClosure: { target in
+    init(provider: MoyaProvider<ApiRouter> = MoyaProvider<ApiRouter>(stubClosure: { target in
         return .immediate
     }),
          decoder: JSONDecoder = JSONDecoder()) {
