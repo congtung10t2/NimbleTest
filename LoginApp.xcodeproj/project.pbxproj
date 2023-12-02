@@ -84,6 +84,7 @@
 		A92B6B6C2B18B6F7000846DF /* LoginType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginType+Extensions.swift"; sourceTree = "<group>"; };
 		A92B6B6F2B18BB4E000846DF /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		A99F1AB82B1B8F8800E9A3BA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		A99F1ABA2B1B96BE00E9A3BA /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		A9A633792B1794CB00EAF6CB /* LoginApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9A6337C2B1794CB00EAF6CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9A6337E2B1794CB00EAF6CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +205,7 @@
 		A9A633702B1794CA00EAF6CB = {
 			isa = PBXGroup;
 			children = (
+				A99F1ABA2B1B96BE00E9A3BA /* Readme.md */,
 				A9A6337B2B1794CB00EAF6CB /* LoginApp */,
 				A9A633922B1794CC00EAF6CB /* LoginAppTests */,
 				A9A6339C2B1794CC00EAF6CB /* LoginAppUITests */,
