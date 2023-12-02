@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.backgroundColor = .white
             self.window?.makeKeyAndVisible()
             if TokenManager.shared.getAccessToken() != nil && TokenManager.shared.getRefreshToken() != nil {
-                let homeViewController = HomeViewController()
+                let homeViewController = UINavigationController(rootViewController: HomeViewController())
                 homeViewController.modalPresentationStyle = .fullScreen
                 rootViewController.present(homeViewController, animated: false)
             }
