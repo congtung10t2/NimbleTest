@@ -43,9 +43,7 @@ class LoginViewModel {
             case .failure(let error):
                 completion(.failure(error))
             case .errorResponse(let error):
-                let message = error.errors.first?.detail ?? ""
-                let error = NSError(domain: "", code: 0, userInfo: ["message": message])
-                completion(.failure(error))
+                completion(.failure(error.getError()))
             }
             
         case .failure(let error):

@@ -31,6 +31,13 @@ struct ErrorResponse: Codable {
     let errors: [ErrorDetail]
 }
 
+extension ErrorResponse {
+    func getError() -> NSError {
+        let message = self.errors.first?.detail ?? ""
+        return NSError(domain: "", code: 0, userInfo: ["message": message])
+    }
+}
+
 struct ErrorDetail: Codable {
     let detail: String
     let code: String

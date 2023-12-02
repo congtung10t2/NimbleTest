@@ -31,9 +31,7 @@ class HomeViewModel {
                 case .failure(let error):
                     completion(.failure(error))
                 case .errorResponse(let response):
-                    let message = response.errors.first?.detail ?? ""
-                    let error = NSError(domain: "", code: 0, userInfo: ["message": message])
-                    completion(.failure(error))
+                    completion(.failure(response.getError()))
                 }
             case .failure(let error):
                 completion(.failure(error))

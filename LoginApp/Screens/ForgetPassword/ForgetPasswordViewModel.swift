@@ -18,9 +18,16 @@ class ForgetPasswordViewModel {
         self.authenticationService.forgetPassword(email: email) { result in
             switch result {
             case .success(let response):
-                break
+                switch response {
+                case .success(let message):
+                    completion(.success(message))
+                case .errorResponse(let error):
+                    completion(.failure(error.getError()))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             case .failure(let error):
-                break
+                completion(.failure(error))
             }
         }
     }
