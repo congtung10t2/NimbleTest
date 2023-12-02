@@ -6,7 +6,6 @@ target 'LoginApp' do
   use_frameworks!
   
   # Pods for LoginApp
-  pod 'OAuthSwift', '~> 2.2.0'
   pod 'SnapKit', '~> 5.6.0'
   pod 'Moya', '~> 15.0'
   pod 'KeychainSwift'
