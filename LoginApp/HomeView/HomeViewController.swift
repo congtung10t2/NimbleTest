@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class HomeViewController: UIViewController {
-
+    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -21,14 +21,14 @@ class HomeViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
-
+    
     private let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.currentPageIndicatorTintColor = .systemBlue
         pageControl.pageIndicatorTintColor = .systemGray
         return pageControl
     }()
-
+    
     private let startSurveyButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "ic-start-survey"), for: .normal)
@@ -39,43 +39,59 @@ class HomeViewController: UIViewController {
     
     private let logoutButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "ic-start-survey"), for: .normal)
+        button.setImage(UIImage(named: "ic-avatar"), for: .normal)
         button.backgroundColor = .clear
-        button.addTarget(self, action: #selector(startSurvey), for: .touchUpInside)
+        button.addTarget(self, action: #selector(logoutTapped), for: .touchUpInside)
         return button
     }()
-
+    
+    private let loadingIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.color = .gray
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
+    private let blurView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        return blurView
+    }()
+    
     private var onboardingPages: [OnboardingPage] = []
-
+    
     let viewModel: HomeViewModel
-
+    
     init(viewModel: HomeViewModel = HomeViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupData()
     }
-
+    
     func setupData() {
-         viewModel.fetchSurveyList() { [weak self] result in
-             switch result {
-             case .success(let pages):
-                 self?.reloadData(pages: pages)
-             case .failure(let error):
-                 guard let message = (error as? NSError)?.userInfo["message"] else {
-                     return
-                 }
-                 self?.showAlert(title: "Fetching survey failed", message: "\(message)")
-             }
-         }
+        showLoading()
+        viewModel.fetchSurveyList() { [weak self] result in
+            guard let self else { return }
+            self.hideLoading()
+            switch result {
+            case .success(let pages):
+                self.reloadData(pages: pages)
+            case .failure(let error):
+                guard let message = (error as? NSError)?.userInfo["message"] else {
+                    return
+                }
+                self.showAlert(title: "Fetching survey failed", message: "\(message)")
+            }
+        }
     }
     
     func addBackground(){
@@ -86,7 +102,7 @@ class HomeViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
-
+    
     func reloadData(pages: [OnboardingPage]) {
         DispatchQueue.main.async {
             self.onboardingPages = pages
@@ -94,7 +110,7 @@ class HomeViewController: UIViewController {
             self.pageControl.numberOfPages = self.onboardingPages.count
         }
     }
-
+    
     private func setupViews() {
         addBackground()
         collectionView.delegate = self
@@ -105,7 +121,7 @@ class HomeViewController: UIViewController {
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-
+        
         view.addSubview(pageControl)
         pageControl.pageIndicatorTintColor = .lightGray
         pageControl.currentPageIndicatorTintColor = .white
@@ -117,7 +133,7 @@ class HomeViewController: UIViewController {
             make.leading.equalToSuperview().offset(leadingPageControlOffset)
             make.bottom.equalToSuperview().inset(172)
         }
-
+        
         view.addSubview(startSurveyButton)
         startSurveyButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(20)
@@ -125,11 +141,76 @@ class HomeViewController: UIViewController {
             make.width.equalTo(56)
             make.height.equalTo(56)
         }
+        
+        view.addSubview(logoutButton)
+        logoutButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(20)
+            make.top.equalToSuperview().offset(79)
+            make.width.height.equalTo(36)
+        }
+        
+        addBlurView()
     }
-
+    
+    private func addBlurView() {
+        view.addSubview(blurView)
+        blurView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        // Add loading indicator to the blur view
+        blurView.contentView.addSubview(loadingIndicator)
+        loadingIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+    
     @objc private func startSurvey() {
         debugPrint("Access page detail \(pageControl.currentPage)")
         
+    }
+    
+    func showLoading() {
+        blurView.isHidden = false
+        loadingIndicator.startAnimating()
+    }
+    
+    func hideLoading() {
+        blurView.isHidden = true
+        loadingIndicator.stopAnimating()
+    }
+    
+    private func proceedLogout(isLoggingOut: Bool) {
+        if isLoggingOut {
+            self.dismiss(animated: true)
+        } else {
+            self.showAlert(title: "Logout", message: "Session is invalid") { [weak self] in
+                guard let self else {
+                    return
+                }
+                self.dismiss(animated: true)
+            }
+        }
+        viewModel.clearOldTokenData()
+    }
+    
+    @objc private func logoutTapped() {
+        showLoading()
+        viewModel.logout() {[weak self] result in
+            guard let self else {
+                return
+            }
+            self.hideLoading()
+            switch result {
+            case .success(let isLoggingOut):
+                self.proceedLogout(isLoggingOut: isLoggingOut)
+            case .failure(let error):
+                guard let message = (error as? NSError)?.userInfo["message"] else {
+                    return
+                }
+                self.showAlert(title: "Logout failed", message: "\(message)")
+            }
+        }
     }
 }
 
@@ -137,7 +218,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return onboardingPages.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingPageCollectionViewCell", for: indexPath) as? OnboardingPageCollectionViewCell else {
             return UICollectionViewCell()
@@ -154,14 +235,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         let pageWidth = view.frame.width
         let currentPage = Int(scrollView.contentOffset.x / pageWidth)
         let newX = CGFloat(currentPage) * pageWidth
-
+        
         if scrollView.contentOffset.x != newX {
             scrollView.setContentOffset(CGPoint(x: newX, y: 0), animated: true)
         }
         startSurveyButton.isHidden = false
         pageControl.currentPage = currentPage
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height)
     }

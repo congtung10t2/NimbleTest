@@ -11,11 +11,11 @@ import Moya
 class AutoRefreshToken {
     static let shared = AutoRefreshToken()
     private var tokenManager: TokenManaging
-    private var loginService: LoginService
+    private var loginService: AuthenticationService
     private var timer: Timer?
     private var retryCount = 0
 
-    private init(tokenManager: TokenManaging = TokenManager.shared, loginService: LoginService = LoginServiceImplement()) {
+    private init(tokenManager: TokenManaging = TokenManager.shared, loginService: AuthenticationService = AuthenticationImplement()) {
         self.tokenManager = tokenManager
         self.loginService = loginService
     }
