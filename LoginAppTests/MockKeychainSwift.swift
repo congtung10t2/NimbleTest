@@ -1,6 +1,6 @@
 //
 //  MockKeychainSwift.swift
-//  LoginAppTests
+//  SurveyAppTests
 //
 //  Created by tungaptive on 02/12/2023.
 //
@@ -8,7 +8,7 @@
 import Foundation
 import KeychainSwift
 
-@testable import LoginApp
+@testable import SurveyApp
 
 class MockKeychainSwift: KeychainProtocol {
     var storage: [String: String] = [:]

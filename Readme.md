@@ -33,6 +33,6 @@ pod install
 
 Open the project workspace in Xcode:
 ```
-LoginApp.xcworkspace
+SurveyApp.xcworkspace
 ```
 Finally, click on run and test it.
