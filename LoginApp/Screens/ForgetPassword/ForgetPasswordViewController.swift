@@ -22,6 +22,7 @@ class ForgetPasswordViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        self.navigationController?.navigationBar.tintColor = .white
     }
     
     func setupUI() {
@@ -64,9 +65,12 @@ class ForgetPasswordViewController: BaseViewController {
             self.hideLoading()
             switch result {
             case .success(let message):
-                self.showAlert(title: "Nimble", message: message)
+                self.showAlert(title: "Successfully", message: message) { [weak self] in
+                    self?.navigationController?.popViewController(animated: true)
+                }
             case .failure(let error):
                 guard let message = (error as? NSError)?.userInfo["message"] else {
+                    self.showAlert(title: "Error", message: "Something went wrong!")
                     return
                 }
                 self.showAlert(title: "Error", message: "\(message)")

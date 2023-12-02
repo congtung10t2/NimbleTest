@@ -97,7 +97,7 @@ class LoginViewController: BaseViewController {
             case .success:
                 let homeViewController = UINavigationController(rootViewController: HomeViewController())
                 homeViewController.modalPresentationStyle = .fullScreen
-                self.present(homeViewController, animated: true)
+                self.present(homeViewController, animated: false)
             case .failure(let error):
                 guard let message = (error as? NSError)?.userInfo["message"] else {
                     return
