@@ -19,7 +19,7 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
     }
     
     private func setupUI() {
@@ -30,14 +30,16 @@ class BaseViewController: UIViewController {
     
     private let loadingIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
-        indicator.color = .gray
+        indicator.color = .white
+        
         indicator.hidesWhenStopped = true
         return indicator
     }()
     
-    private let blurView: UIVisualEffectView = {
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurView = UIVisualEffectView(effect: blurEffect)
+    private let dimView: UIView = {
+        let blurView = UIView()
+        blurView.backgroundColor = .black
+        blurView.alpha = 0.2
         return blurView
     }()
     
@@ -75,24 +77,24 @@ class BaseViewController: UIViewController {
         }
     }
     
-    func addBlurView() {
-        view.addSubview(blurView)
-        blurView.snp.makeConstraints { make in
+    func addDimView() {
+        view.addSubview(dimView)
+        dimView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        blurView.contentView.addSubview(loadingIndicator)
+        view.addSubview(loadingIndicator)
         loadingIndicator.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
     }
     
     func showLoading() {
-        blurView.isHidden = false
+        dimView.isHidden = false
         loadingIndicator.startAnimating()
     }
     
     func hideLoading() {
-        blurView.isHidden = true
+        dimView.isHidden = true
         loadingIndicator.stopAnimating()
     }
 }

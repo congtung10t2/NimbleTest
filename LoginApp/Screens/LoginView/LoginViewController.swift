@@ -65,7 +65,7 @@ class LoginViewController: BaseViewController {
             contentStackView.addArrangedSubview(dynamicElement)
         }
         addForgetPassword()
-        addBlurView()
+        addDimView()
         hideLoading()
     }
     
