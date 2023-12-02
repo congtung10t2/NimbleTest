@@ -19,11 +19,14 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    private func setupUI() {
         addBackground()
         addLogo()
         addContentView()
     }
-    
     
     private let loadingIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
@@ -77,8 +80,6 @@ class BaseViewController: UIViewController {
         blurView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        // Add loading indicator to the blur view
         blurView.contentView.addSubview(loadingIndicator)
         loadingIndicator.snp.makeConstraints { make in
             make.center.equalToSuperview()

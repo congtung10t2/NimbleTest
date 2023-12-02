@@ -79,8 +79,10 @@ class HomeViewController: UIViewController {
     
     func setupData() {
         showLoading()
-        viewModel.fetchSurveyList() { [weak self] result in
-            guard let self else { return }
+        viewModel.fetchSurveyList { [weak self] result in
+            guard let self else {
+                return
+            }
             self.hideLoading()
             switch result {
             case .success(let pages):
@@ -94,9 +96,9 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func addBackground(){
+    func addBackground() {
         let imageView = UIImageView(image: UIImage(named: "bg-home"))
-        imageView.contentMode =  .scaleToFill
+        imageView.contentMode = .scaleToFill
         view.addSubview(imageView)
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -113,6 +115,13 @@ class HomeViewController: UIViewController {
     
     private func setupViews() {
         addBackground()
+        addCollection()
+        addPageControl()
+        addSurveyButton()
+        addBlurView()
+    }
+    
+    private func addCollection() {
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
         collectionView.dataSource = self
@@ -121,7 +130,9 @@ class HomeViewController: UIViewController {
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
+    }
+    
+    private func addPageControl() {
         view.addSubview(pageControl)
         pageControl.pageIndicatorTintColor = .lightGray
         pageControl.currentPageIndicatorTintColor = .white
@@ -133,7 +144,18 @@ class HomeViewController: UIViewController {
             make.leading.equalToSuperview().offset(leadingPageControlOffset)
             make.bottom.equalToSuperview().inset(172)
         }
-        
+    }
+    
+    private func addLogoutButton() {
+        view.addSubview(logoutButton)
+        logoutButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(20)
+            make.top.equalToSuperview().offset(79)
+            make.width.height.equalTo(36)
+        }
+    }
+    
+    private func addSurveyButton() {
         view.addSubview(startSurveyButton)
         startSurveyButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(20)
@@ -141,15 +163,6 @@ class HomeViewController: UIViewController {
             make.width.equalTo(56)
             make.height.equalTo(56)
         }
-        
-        view.addSubview(logoutButton)
-        logoutButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(20)
-            make.top.equalToSuperview().offset(79)
-            make.width.height.equalTo(36)
-        }
-        
-        addBlurView()
     }
     
     private func addBlurView() {
