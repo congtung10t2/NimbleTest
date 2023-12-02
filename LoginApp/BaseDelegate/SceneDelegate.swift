@@ -15,7 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let rootViewController = LoginViewController(viewModel: LoginViewModel())
+        let loginViewController = LoginViewController(viewModel: LoginViewModel())
+        let rootViewController = UINavigationController(rootViewController: loginViewController)
         AutoRefreshToken.shared.startTokenRefresh()
         window = UIWindow(windowScene: windowScene)
         window?.bounds = UIScreen.main.bounds
@@ -23,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.backgroundColor = .white
         window?.makeKeyAndVisible()
         if TokenManager.shared.getAccessToken() != nil && TokenManager.shared.getRefreshToken() != nil {
-            let homeViewController = HomeViewController()
+            let homeViewController = UINavigationController(rootViewController: HomeViewController())
             homeViewController.modalPresentationStyle = .fullScreen
             rootViewController.present(homeViewController, animated: false)
         }

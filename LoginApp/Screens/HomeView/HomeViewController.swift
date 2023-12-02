@@ -166,8 +166,9 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func startSurvey() {
-        debugPrint("Access page detail \(pageControl.currentPage)")
-        
+        let detailViewController = DetailViewController()
+        detailViewController.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     func showLoading() {
