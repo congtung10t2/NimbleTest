@@ -1,12 +1,12 @@
 //
 //  MockTokenManager.swift
-//  LoginAppTests
+//  SurveyAppTests
 //
 //  Created by tungaptive on 02/12/2023.
 //
 
 import Foundation
-@testable import LoginApp
+@testable import SurveyApp
 
 class MockTokenManager: TokenManaging {
 

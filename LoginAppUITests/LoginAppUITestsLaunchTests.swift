@@ -1,13 +1,13 @@
 //
-//  LoginAppUITestsLaunchTests.swift
-//  LoginAppUITests
+//  SurveyAppUITestsLaunchTests.swift
+//  SurveyAppUITests
 //
 //  Created by tungaptive on 29/11/2023.
 //
 
 import XCTest
 
-final class LoginAppUITestsLaunchTests: XCTestCase {
+final class SurveyAppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

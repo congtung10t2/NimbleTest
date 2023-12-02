@@ -1,14 +1,14 @@
 //
-//  LoginAppTests.swift
-//  LoginAppTests
+//  SurveyAppTests.swift
+//  SurveyAppTests
 //
 //  Created by tungaptive on 29/11/2023.
 //
 
 import XCTest
-@testable import LoginApp
+@testable import SurveyApp
 
-final class LoginAppTests: XCTestCase {
+final class SurveyAppTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

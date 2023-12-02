@@ -1,6 +1,6 @@
 //
 //  HomeViewModelTests.swift
-//  LoginAppTests
+//  SurveyAppTests
 //
 //  Created by tungaptive on 02/12/2023.
 //
@@ -8,7 +8,7 @@
 import Foundation
 import XCTest
 import Moya
-@testable import LoginApp
+@testable import SurveyApp
 
 class HomeViewModelTests: XCTestCase {
     

@@ -1,13 +1,13 @@
 //
 //  TokenManagerTests.swift
-//  LoginAppTests
+//  SurveyAppTests
 //
 //  Created by tungaptive on 02/12/2023.
 //
 
 import Foundation
 import XCTest
-@testable import LoginApp
+@testable import SurveyApp
 
 class TokenManagerTests: XCTestCase {
     var tokenManager: TokenManaging!
