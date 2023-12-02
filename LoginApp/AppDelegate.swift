@@ -11,7 +11,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window : UIWindow?
-    var rootViewController: UIViewController!
+    var rootViewController: UIViewController = LoginViewController(viewModel: LoginViewModel())
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -19,16 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Code to be executed if the iOS version is 11 or newer
         } else {
             AutoRefreshToken.shared.startTokenRefresh()
-            if TokenManager.shared.getAccessToken() != nil || TokenManager.shared.getRefreshToken() != nil {
-                rootViewController = HomeViewController()
-            } else {
-                rootViewController = LoginViewController(viewModel: LoginViewModel())
-            }
             self.window = UIWindow()
             self.window?.bounds = UIScreen.main.bounds
             self.window?.rootViewController = rootViewController
             self.window?.backgroundColor = .white
             self.window?.makeKeyAndVisible()
+            if TokenManager.shared.getAccessToken() != nil && TokenManager.shared.getRefreshToken() != nil {
+                let homeViewController = HomeViewController()
+                homeViewController.modalPresentationStyle = .fullScreen
+                rootViewController.present(homeViewController, animated: false)
+            }
         }
         
         return true

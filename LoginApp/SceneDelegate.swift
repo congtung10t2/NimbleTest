@@ -15,18 +15,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        var rootViewController: UIViewController!
-        if TokenManager.shared.getAccessToken() != nil || TokenManager.shared.getRefreshToken() != nil {
-            rootViewController = HomeViewController()
-        } else {
-            rootViewController = LoginViewController(viewModel: LoginViewModel())
-        }
+        let rootViewController = LoginViewController(viewModel: LoginViewModel())
+        AutoRefreshToken.shared.startTokenRefresh()
         window = UIWindow(windowScene: windowScene)
-        let viewController = rootViewController
-        window?.rootViewController = viewController
+        window?.bounds = UIScreen.main.bounds
+        window?.rootViewController = rootViewController
+        window?.backgroundColor = .white
         window?.makeKeyAndVisible()
-        
-        
+        if TokenManager.shared.getAccessToken() != nil && TokenManager.shared.getRefreshToken() != nil {
+            let homeViewController = HomeViewController()
+            homeViewController.modalPresentationStyle = .fullScreen
+            rootViewController.present(homeViewController, animated: false)
+        }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

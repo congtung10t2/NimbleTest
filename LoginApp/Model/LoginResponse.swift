@@ -11,6 +11,8 @@ struct LoginResponse: Codable {
     let data: TokenData
 }
 
+struct LogoutResponse: Codable {}
+
 struct TokenData: Codable {
     let id: String
     let type: String
@@ -36,6 +38,13 @@ struct ErrorDetail: Codable {
 
 enum LoginResult {
     case success(LoginResponse)
+    case failure(Error)
+    case errorResponse(ErrorResponse)
+}
+
+
+enum LogoutResult {
+    case success
     case failure(Error)
     case errorResponse(ErrorResponse)
 }

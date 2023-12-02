@@ -33,7 +33,7 @@
 		A9AAA9612B1A24AA0056105D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA9602B1A24AA0056105D /* HomeViewModel.swift */; };
 		A9AAA9632B1A2A630056105D /* SurveyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AAA9622B1A2A630056105D /* SurveyService.swift */; };
 		A9F8B3DF2B18C20F00E415D5 /* LoginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = A9F8B3DE2B18C20F00E415D5 /* LoginResponse.json */; };
-		A9F8B3E22B19849A00E415D5 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F8B3E12B19849A00E415D5 /* LoginService.swift */; };
+		A9F8B3E22B19849A00E415D5 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F8B3E12B19849A00E415D5 /* AuthenticationService.swift */; };
 		A9F8B3E42B1984E000E415D5 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F8B3E32B1984E000E415D5 /* Endpoint.swift */; };
 		A9F8B3E62B19869100E415D5 /* LoginError.json in Resources */ = {isa = PBXBuildFile; fileRef = A9F8B3E52B19869100E415D5 /* LoginError.json */; };
 		A9F8B3E82B1986DE00E415D5 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F8B3E72B1986DE00E415D5 /* LoginResponse.swift */; };
@@ -93,7 +93,7 @@
 		A9AAA9602B1A24AA0056105D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A9AAA9622B1A2A630056105D /* SurveyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyService.swift; sourceTree = "<group>"; };
 		A9F8B3DE2B18C20F00E415D5 /* LoginResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginResponse.json; sourceTree = "<group>"; };
-		A9F8B3E12B19849A00E415D5 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		A9F8B3E12B19849A00E415D5 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		A9F8B3E32B1984E000E415D5 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		A9F8B3E52B19869100E415D5 /* LoginError.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoginError.json; sourceTree = "<group>"; };
 		A9F8B3E72B1986DE00E415D5 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
@@ -279,7 +279,7 @@
 			children = (
 				A9AAA94D2B19DD9A0056105D /* AutoRefreshToken */,
 				A9F8B3EC2B19920800E415D5 /* Keychain */,
-				A9F8B3E12B19849A00E415D5 /* LoginService.swift */,
+				A9F8B3E12B19849A00E415D5 /* AuthenticationService.swift */,
 				A9F8B3E32B1984E000E415D5 /* Endpoint.swift */,
 				A9AAA9622B1A2A630056105D /* SurveyService.swift */,
 			);
@@ -560,7 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9F8B3E22B19849A00E415D5 /* LoginService.swift in Sources */,
+				A9F8B3E22B19849A00E415D5 /* AuthenticationService.swift in Sources */,
 				A92B6B6B2B18B13C000846DF /* LoginType.swift in Sources */,
 				A9AAA95F2B1A21E10056105D /* OnboardingPage.swift in Sources */,
 				A9AAA9612B1A24AA0056105D /* HomeViewModel.swift in Sources */,

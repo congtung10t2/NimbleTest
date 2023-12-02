@@ -11,14 +11,14 @@ import Moya
 class HomeViewModel {
     private var surveyService: SurveyService
     private var tokenManager: TokenManaging
-    private var loginService: LoginService
+    private var authenticationService: AuthenticationService
     
     init(tokenManager: TokenManaging = TokenManager.shared,
          surveyService: SurveyService = SurveyServiceImplement(),
-         loginService: LoginService = LoginServiceImplement()) {
+         loginService: AuthenticationService = AuthenticationImplement()) {
         self.surveyService = surveyService
         self.tokenManager = tokenManager
-        self.loginService = loginService
+        self.authenticationService = loginService
     }
     
     func fetchSurveyList(completion: @escaping (Result<[OnboardingPage], Error>) -> Void) {
@@ -41,7 +41,22 @@ class HomeViewModel {
         }
     }
     
-    func logout() {
-        //TODO: to implement logout service
+    func clearOldTokenData() {
+        tokenManager.clearTokens()
+    }
+    
+    func logout(completion: @escaping (Result<Bool, Error>) -> Void) {
+        guard let accessToken = tokenManager.getAccessToken() else {
+            completion(.success(false))
+            return
+        }
+        authenticationService.logout(token: accessToken) { result in
+            switch result {
+            case .success:
+                completion(.success(true))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }
