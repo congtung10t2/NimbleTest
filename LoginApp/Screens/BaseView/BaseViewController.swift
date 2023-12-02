@@ -24,6 +24,21 @@ class BaseViewController: UIViewController {
         addContentView()
     }
     
+    
+    private let loadingIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.color = .gray
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
+    private let blurView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        return blurView
+    }()
+    
+    
     func addContentView() {
         view.addSubview(contentStackView)
         contentStackView.snp.makeConstraints { make in
@@ -55,6 +70,29 @@ class BaseViewController: UIViewController {
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    func addBlurView() {
+        view.addSubview(blurView)
+        blurView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        // Add loading indicator to the blur view
+        blurView.contentView.addSubview(loadingIndicator)
+        loadingIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+    
+    func showLoading() {
+        blurView.isHidden = false
+        loadingIndicator.startAnimating()
+    }
+    
+    func hideLoading() {
+        blurView.isHidden = true
+        loadingIndicator.stopAnimating()
     }
 }
 

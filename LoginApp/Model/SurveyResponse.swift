@@ -10,7 +10,7 @@ import Foundation
 // MARK: - SurveyList
 struct SurveyList: Codable {
     let data: [Survey]
-    let meta: Meta
+    let meta: SurveyMeta
 }
 
 // MARK: - Survey
@@ -33,7 +33,7 @@ struct SurveyAttributes: Codable {
 }
 
 // MARK: - Meta
-struct Meta: Codable {
+struct SurveyMeta: Codable {
     let page, pages, pageSize, records: Int
 }
 

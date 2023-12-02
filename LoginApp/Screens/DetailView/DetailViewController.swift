@@ -16,6 +16,8 @@ class DetailViewController: UIViewController {
         // Create a custom back button with the title "Back"
         let backButton = UIBarButtonItem()
         backButton.title = "Back"
+       // backButton.tintColor = .white
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem?.tintColor = .white
     }
 }

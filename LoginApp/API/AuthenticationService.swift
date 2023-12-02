@@ -12,6 +12,8 @@ protocol AuthenticationService {
     func login(email: String, password: String, completion: @escaping (Result<LoginResult, MoyaError>) -> Void)
     func login(refreshToken: String, completion: @escaping (Result<LoginResult, MoyaError>) -> Void)
     func logout(token: String, completion: @escaping (Result<LogoutResult, MoyaError>) -> Void)
+    
+    func forgetPassword(email: String, completion: @escaping (Result<ForgetPasswordResult, MoyaError>) -> Void)
 }
 
 class AuthenticationImplement: AuthenticationService {
@@ -61,12 +63,33 @@ class AuthenticationImplement: AuthenticationService {
             switch result {
             case .success(let response):
                 do {
-                    let errorResponse = try self.decoder.decode(LogoutResponse.self, from: response.data)
+                    let _ = try self.decoder.decode(LogoutResponse.self, from: response.data)
                     completion(.success(LogoutResult.success))
                 } catch {
                     do {
                         let errorResponse = try self.decoder.decode(ErrorResponse.self, from: response.data)
                         completion(.success(LogoutResult.errorResponse(errorResponse)))
+                    } catch {
+                        completion(.failure(MoyaError.objectMapping(error, response)))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func forgetPassword(email: String, completion: @escaping (Result<ForgetPasswordResult, Moya.MoyaError>) -> Void) {
+        apiProvider.request(.forgetPassword(email: email)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoderResponse = try self.decoder.decode(ForgetPasswordResponse.self, from: response.data)
+                    completion(.success(ForgetPasswordResult.success(message: decoderResponse.meta.message)))
+                } catch {
+                    do {
+                        let errorResponse = try self.decoder.decode(ErrorResponse.self, from: response.data)
+                        completion(.success(ForgetPasswordResult.errorResponse(errorResponse)))
                     } catch {
                         completion(.failure(MoyaError.objectMapping(error, response)))
                     }
