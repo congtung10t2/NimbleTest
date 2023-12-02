@@ -16,6 +16,7 @@
 		A92B6B6B2B18B13C000846DF /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B6B6A2B18B13C000846DF /* LoginType.swift */; };
 		A92B6B6D2B18B6F7000846DF /* LoginType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B6B6C2B18B6F7000846DF /* LoginType+Extensions.swift */; };
 		A92B6B702B18BB4E000846DF /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B6B6F2B18BB4E000846DF /* TextField.swift */; };
+		A99F1AB92B1B8F8800E9A3BA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99F1AB82B1B8F8800E9A3BA /* HomeViewModelTests.swift */; };
 		A9A6337D2B1794CB00EAF6CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A6337C2B1794CB00EAF6CB /* AppDelegate.swift */; };
 		A9A6337F2B1794CB00EAF6CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A6337E2B1794CB00EAF6CB /* SceneDelegate.swift */; };
 		A9A633812B1794CB00EAF6CB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A633802B1794CB00EAF6CB /* BaseViewController.swift */; };
@@ -82,6 +83,7 @@
 		A92B6B6A2B18B13C000846DF /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
 		A92B6B6C2B18B6F7000846DF /* LoginType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginType+Extensions.swift"; sourceTree = "<group>"; };
 		A92B6B6F2B18BB4E000846DF /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		A99F1AB82B1B8F8800E9A3BA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		A9A633792B1794CB00EAF6CB /* LoginApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9A6337C2B1794CB00EAF6CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9A6337E2B1794CB00EAF6CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				A9AAA9792B1B803F0056105D /* LoginResponseTests.swift */,
 				A9AAA97D2B1B89320056105D /* LoginViewModelTests.swift */,
 				A9AAA97F2B1B89A80056105D /* MockTokenManager.swift */,
+				A99F1AB82B1B8F8800E9A3BA /* HomeViewModelTests.swift */,
 			);
 			path = LoginAppTests;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9AAA97E2B1B89320056105D /* LoginViewModelTests.swift in Sources */,
+				A99F1AB92B1B8F8800E9A3BA /* HomeViewModelTests.swift in Sources */,
 				A9A633942B1794CC00EAF6CB /* LoginAppTests.swift in Sources */,
 				A9AAA9762B1B7C020056105D /* MockKeychainSwift.swift in Sources */,
 				A9AAA97A2B1B803F0056105D /* LoginResponseTests.swift in Sources */,
