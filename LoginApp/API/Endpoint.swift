@@ -31,7 +31,7 @@ extension Endpoint: TargetType {
         case .logout:
             return "/oauth/revoke"
         case .surveys:
-            return "surveys"
+            return "/surveys"
             
         }
     }
@@ -56,8 +56,7 @@ extension Endpoint: TargetType {
                                          "client_secret": Self.clientSecret],
                                       encoding: JSONEncoding.default)
         case .logout(let token):
-            return .requestParameters(parameters: ["grant_type": "refresh_token",
-                                                   "token": token,
+            return .requestParameters(parameters: ["token": token,
                                                    "client_id": Self.clientId,
                                                    "client_secret": Self.clientSecret],
                                       encoding: JSONEncoding.default)
@@ -76,14 +75,15 @@ extension Endpoint: TargetType {
                 params["page[size]"] = size
             }
             
-            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
         }
         
     }
     
     public var headers: [String : String]? {
         if let accessToken = TokenManager.shared.getAccessToken() {
-            return ["Authorization": "Bearer \(accessToken)"]
+            return ["Content-type": "application/json",
+                    "Authorization": "Bearer \(accessToken)"]
         }
         return nil
     }
@@ -109,22 +109,10 @@ extension Endpoint: TargetType {
 
 private extension Endpoint {
     static func getSampleData(fileName: String) -> Data {
-        // Get the path to the LoginResponse.json file in the main bundle
-        if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
-            
-            // Create a URL from the file path
-            let fileURL = URL(fileURLWithPath: path)
-            do {
-                
-                // Read the contents of the file into Data
-                return try Data(contentsOf: fileURL)
-            } catch {
-                print("Error during read\(error)")
-            }
-             
-        } else {
-            print(".json file not found in the main bundle.")
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json"),
+              let data = try? Data(contentsOf: url) else {
+            return Data()
         }
-        return Data()
+        return data
     }
 }

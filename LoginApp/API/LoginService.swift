@@ -33,7 +33,7 @@ class LoginServiceImplement: LoginService {
             } catch {
                 do {
                     let errorResponse = try self.decoder.decode(ErrorResponse.self, from: response.data)
-                    completion(.success(LoginResult.loginError(errorResponse)))
+                    completion(.success(LoginResult.errorResponse(errorResponse)))
                 } catch {
                     completion(.failure(MoyaError.objectMapping(error, response)))
                 }

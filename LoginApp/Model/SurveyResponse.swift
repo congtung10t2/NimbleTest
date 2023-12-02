@@ -21,14 +21,24 @@ struct Survey: Codable {
 
 // MARK: - SurveyAttributes
 struct SurveyAttributes: Codable {
-    let title, description, thankEmailAboveThreshold, thankEmailBelowThreshold: String?
+    let title, description: String
+    let thankEmailAboveThreshold: String?
+    let thankEmailBelowThreshold: String?
     let isActive: Bool
-    let coverImageURL: String
-    let createdAt, activeAt, inactiveAt: String
+    let coverImageUrl: String
+    let createdAt: String?
+    let activeAt: String?
+    let inactiveAt: String?
     let surveyType: String
 }
 
 // MARK: - Meta
 struct Meta: Codable {
     let page, pages, pageSize, records: Int
+}
+
+enum SurveyResult {
+    case success(SurveyList)
+    case failure(Error)
+    case errorResponse(ErrorResponse)
 }

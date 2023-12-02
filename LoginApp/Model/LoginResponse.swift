@@ -37,5 +37,5 @@ struct ErrorDetail: Codable {
 enum LoginResult {
     case success(LoginResponse)
     case failure(Error)
-    case loginError(ErrorResponse)
+    case errorResponse(ErrorResponse)
 }

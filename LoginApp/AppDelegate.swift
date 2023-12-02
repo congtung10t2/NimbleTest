@@ -15,17 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        AutoRefreshToken.shared.startTokenRefresh()
-        if TokenManager.shared.getAccessToken() != nil || TokenManager.shared.getRefreshToken() != nil {
-            rootViewController = HomeViewController()
+        if #available(iOS 13, *) {
+            // Code to be executed if the iOS version is 11 or newer
         } else {
-            rootViewController = LoginViewController(viewModel: LoginViewModel())
+            AutoRefreshToken.shared.startTokenRefresh()
+            if TokenManager.shared.getAccessToken() != nil || TokenManager.shared.getRefreshToken() != nil {
+                rootViewController = HomeViewController()
+            } else {
+                rootViewController = LoginViewController(viewModel: LoginViewModel())
+            }
+            self.window = UIWindow()
+            self.window?.bounds = UIScreen.main.bounds
+            self.window?.rootViewController = rootViewController
+            self.window?.backgroundColor = .white
+            self.window?.makeKeyAndVisible()
         }
-        self.window = UIWindow()
-        self.window?.bounds = UIScreen.main.bounds
-        self.window?.rootViewController = rootViewController
-        self.window?.backgroundColor = .white
-        self.window?.makeKeyAndVisible()
+        
         return true
     }
 

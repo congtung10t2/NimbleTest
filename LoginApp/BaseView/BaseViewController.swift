@@ -51,7 +51,6 @@ class BaseViewController: UIViewController {
     func addBackground(){
         let imageView = UIImageView(image: UIImage(named: "bg-overlay"))
         imageView.contentMode =  .scaleToFill
-        imageView.center = view.center
         view.addSubview(imageView)
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
