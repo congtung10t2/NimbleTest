@@ -14,17 +14,14 @@ class LoginViewController: BaseViewController {
     var emailTextField: UITextField!
     var passwordTextField: UITextField!
     
-    private let loadingIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView()
-        indicator.color = .gray
-        indicator.hidesWhenStopped = true
-        return indicator
-    }()
-    
-    private let blurView: UIVisualEffectView = {
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurView = UIVisualEffectView(effect: blurEffect)
-        return blurView
+    private let forgetButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Forgot?", for: .normal)
+        button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(forgetTapped), for: .touchUpInside)
+        button.setTitleColor(.white, for: .normal)
+        button.alpha = 0.5
+        return button
     }()
     
     init(viewModel: LoginViewModel) {
@@ -67,31 +64,22 @@ class LoginViewController: BaseViewController {
             }
             contentStackView.addArrangedSubview(dynamicElement)
         }
+        addForgetPassword()
         addBlurView()
         hideLoading()
     }
     
-    private func addBlurView() {
-        view.addSubview(blurView)
-        blurView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        // Add loading indicator to the blur view
-        blurView.contentView.addSubview(loadingIndicator)
-        loadingIndicator.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+    func addForgetPassword() {
+        self.passwordTextField.addSubview(forgetButton)
+        forgetButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().inset(17)
         }
     }
     
-    func showLoading() {
-        blurView.isHidden = false
-        loadingIndicator.startAnimating()
-    }
-    
-    func hideLoading() {
-        blurView.isHidden = true
-        loadingIndicator.stopAnimating()
+    @objc func forgetTapped() {
+        let forgetPasswordViewController = ForgetPasswordViewController(viewModel: ForgetPasswordViewModel())
+        self.navigationController?.pushViewController(forgetPasswordViewController, animated: true)
     }
     
     @objc func loginTapped() {
@@ -107,7 +95,7 @@ class LoginViewController: BaseViewController {
             self.hideLoading()
             switch result {
             case .success:
-                let homeViewController = HomeViewController()
+                let homeViewController = UINavigationController(rootViewController: HomeViewController())
                 homeViewController.modalPresentationStyle = .fullScreen
                 self.present(homeViewController, animated: true)
             case .failure(let error):

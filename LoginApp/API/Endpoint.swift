@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-public enum Endpoint {
+enum Endpoint {
     //TODO: - clientId and secret can put in xcconfig when we have more envs
     static let clientId = "ofzl-2h5ympKa0WqqTzqlVJUiRsxmXQmt5tkgrlWnOE"
     static let clientSecret = "lMQb900L-mTeU-FVTCwyhjsfBwRCxwwbCitPob96cuU"
@@ -17,6 +17,7 @@ public enum Endpoint {
     case loginWithToken(token: String)
     case logout(token: String)
     case surveys(page: Int?, size: Int?)
+    case forgetPassword(email: String)
 }
 
 extension Endpoint: TargetType {
@@ -33,6 +34,8 @@ extension Endpoint: TargetType {
         case .surveys:
             return "/surveys"
             
+        case .forgetPassword:
+            return "/password"
         }
     }
     
@@ -76,6 +79,11 @@ extension Endpoint: TargetType {
             }
             
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+        case .forgetPassword(let email):
+            return .requestParameters(parameters: ["user": "{\"email\": \(email)}",
+                                                   "client_id": Self.clientId,
+                                                   "client_secret": Self.clientSecret],
+                                      encoding: JSONEncoding.default)
         }
         
     }
@@ -97,6 +105,8 @@ extension Endpoint: TargetType {
             fileName = "LoginResponse"
         case .surveys:
             fileName = "SurveyResponse"
+        case .forgetPassword:
+            fileName = "ForgetPassword"
         }
         guard let fileName else {
             return Data()

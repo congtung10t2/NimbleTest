@@ -23,13 +23,15 @@ extension LoginType {
                 make.height.equalTo(56)
             }
             return button
-        case .email, .password:
-            return createTextField()
+        case .email:
+            return createTextField(padding: UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5))
+        case .password:
+            return createTextField(padding: UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 90))
         }
     }
     
-    private func createTextField() -> TextField {
-        let textField = TextField()
+    private func createTextField(padding: UIEdgeInsets) -> TextField {
+        let textField = TextField(padding: padding)
         textField.isSecureTextEntry = isSecure
         textField.placeholder = placeHolder
         textField.backgroundColor = .gray

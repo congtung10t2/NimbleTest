@@ -9,12 +9,10 @@ import Moya
 
 protocol LoginUIComponentsProtocol {
     var components: [LoginType] { get }
-    var forgetPassword: Bool { get }
 }
 
 struct LoginUIComponents: LoginUIComponentsProtocol {
     var components: [LoginType]
-    var forgetPassword: Bool
 }
 
 class LoginViewModel {
@@ -22,7 +20,7 @@ class LoginViewModel {
     private var loginService: AuthenticationService
     private var tokenManager: TokenManaging
     
-    init(config: LoginUIComponentsProtocol = LoginUIComponents(components: [.email, .password, .button(label: "Log in")], forgetPassword: true),
+    init(config: LoginUIComponentsProtocol = LoginUIComponents(components: [.email, .password, .button(label: "Log in")]),
          tokenManager: TokenManaging = TokenManager.shared,
          loginService: AuthenticationService = AuthenticationImplement()) {
         self.configuration = config
