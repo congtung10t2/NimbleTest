@@ -42,10 +42,10 @@ class BaseViewController: UIViewController {
     }()
     
     private let dimView: UIView = {
-        let blurView = UIView()
-        blurView.backgroundColor = .black
-        blurView.alpha = 0.2
-        return blurView
+        let dimView = UIView()
+        dimView.backgroundColor = .black
+        dimView.alpha = 0.2
+        return dimView
     }()
     
     

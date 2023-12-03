@@ -51,10 +51,6 @@ class LoginViewModel {
         }
     }
     
-    func login(email: String, password: String) {
-        
-    }
-    
     func login(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         guard !email.isEmpty && !password.isEmpty else {
             let nsError = NSError(domain: "login", code: 0, userInfo: ["message": "Email or password is empty"])
@@ -62,12 +58,6 @@ class LoginViewModel {
             return
         }
         loginService.login(email: email, password: password) { result in
-            self.handleLoginResult(result, completion: completion)
-        }
-    }
-    
-    func login(token: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        loginService.login(refreshToken: token) { result in
             self.handleLoginResult(result, completion: completion)
         }
     }
