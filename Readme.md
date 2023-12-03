@@ -1,22 +1,24 @@
 # NimbleTest
 
-Survey app is simple app develop by Swift 5 and Nimble BE. Application is using factory pattern
-to create Login/Forgot password screen. 
+Survey App is a simple iOS application developed using Swift 5 and Nimble BE. 
+The application leverages the factory pattern to create dynamic Login and Forgot Password screens. 
+The inspiration behind this approach comes from Factory pattern to dynamic creating UI components.
 
-This one is inspiration by Server Driven UI to dynamic create UI Components.
-For demo purpose, we do not have server yet so I use a configuration inside app to make it.
+## Features
 
-App integrated pull to refresh and simple local cache as well.
+Pull to Refresh integration.
+Simple local cache to save response to file.
+Auto-refresh token based on expiration time and backend invalid code response.
+Forgot password integration.
 
-Currently, App integrate auto refresh token by expiration time. We can also base on the backend code to refresh it during fetching survey but I didn't implement it yet.
+## Dependencies
 
-For testing purpose, we can tap on avatar in home screen to logout.
+The project utilizes the following dependencies:
 
-This Project is using Moya for mocking networking layer and api request. 
-https://github.com/Moya/Moya
-
-Keychain for add/remove keychain easier.
-https://github.com/evgenyneu/keychain-swift
+Moya: Networking layer and API request mocking.
+Keychain Swift: Simplifying keychain operations.
+Kingfisher: To simplifying display image. 
+SnapKit: To auto layout and ui development.
 
 
 ## Environment Setup
@@ -53,3 +55,5 @@ Open the project workspace in Xcode:
 SurveyApp.xcworkspace
 ```
 Finally, click on run and test it.
+
+We can tap on the home screen for easy logout during testing.

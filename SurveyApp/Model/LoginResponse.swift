@@ -55,3 +55,9 @@ enum LogoutResult {
     case failure(Error)
     case errorResponse(ErrorResponse)
 }
+
+extension LoginResponse {
+    func save(tokenManager: TokenManaging = TokenManager.shared) {
+        tokenManager.saveTokens(accessToken: self.data.attributes.accessToken, refreshToken: self.data.attributes.refreshToken, expiresIn: TimeInterval(self.data.attributes.expiresIn), createdAt: TimeInterval(self.data.attributes.createdAt))
+    }
+}
