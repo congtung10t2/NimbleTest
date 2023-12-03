@@ -19,11 +19,11 @@ class HomeViewModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        mockSurveyService = SurveyServiceImplement(provider: MoyaProvider<ApiRouter>(stubClosure: { target in
+        mockSurveyService = SurveyServiceImplement(provider: MoyaProvider<ApiRouter>(stubClosure: { _ in
             return .immediate
         }))
         mockTokenManager = MockTokenManager()
-        mockAuthenticationService = AuthenticationImplement(provider: MoyaProvider<ApiRouter>(stubClosure: { target in
+        mockAuthenticationService = AuthenticationImplement(provider: MoyaProvider<ApiRouter>(stubClosure: { _ in
             return .immediate
         }))
         homeViewModel = HomeViewModel(
@@ -62,5 +62,30 @@ class HomeViewModelTests: XCTestCase {
         }
         
         waitForExpectations(timeout: 1.0, handler: nil)
+    }
+    
+    func testCacheDataWorking() {
+        homeViewModel.saveDataToCache(pages: [OnboardingPage(coverUrl: "1", title: "2", description: "3")])
+        
+        let dataFromCache = homeViewModel.loadDataFromCache()
+        XCTAssertEqual(dataFromCache?.count, 1)
+        XCTAssertEqual(dataFromCache?.first?.coverUrl, "1")
+        XCTAssertEqual(dataFromCache?.first?.title, "2")
+        XCTAssertEqual(dataFromCache?.first?.description, "3")
+    }
+    
+    func testLogOutReturnFalseWhenNoSession() {
+        let homeViewModel = HomeViewModel(tokenManager: TokenManager(keychain: MockKeychainSwift()),
+                                          surveyService: mockSurveyService,
+                                          loginService: mockAuthenticationService)
+        homeViewModel.clearOldTokenData()
+        homeViewModel.logout() { result in
+            switch result {
+            case .success(let loggingOut):
+                XCTAssertFalse(loggingOut)
+            default:
+                XCTFail("Test should failed when no token")
+            }
+        }
     }
 }
