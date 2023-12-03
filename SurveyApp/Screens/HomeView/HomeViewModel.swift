@@ -13,6 +13,7 @@ class HomeViewModel {
     private var tokenManager: TokenManaging
     private var authenticationService: AuthenticationService
     private let cacheFile = "surveyList"
+    private let invalidTokenCode = "invalid_token"
     
     init(tokenManager: TokenManaging = TokenManager.shared,
          surveyService: SurveyService = SurveyServiceImplement(),
@@ -23,7 +24,10 @@ class HomeViewModel {
     }
     
     func fetchSurveyList(completion: @escaping (Result<[OnboardingPage], Error>) -> Void) {
-        surveyService.fetchSurvey(nil, nil) { result in
+        surveyService.fetchSurvey(nil, nil) { [weak self] result in
+            guard let self else {
+                return
+            }
             switch result {
             case .success(let response):
                 switch response {
@@ -33,8 +37,39 @@ class HomeViewModel {
                 case .failure(let error):
                     completion(.failure(error))
                 case .errorResponse(let response):
+                    if response.errors.contains(where: { $0.code == self.invalidTokenCode }) {
+                        self.loginThenFetch(completion: completion)
+                    }
                     completion(.failure(response.getError()))
                 }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    private func loginThenFetch(completion: @escaping (Result<[OnboardingPage], Error>) -> Void) {
+        guard let refreshToken = tokenManager.getRefreshToken() else {
+            let nsError = NSError(domain: "login", code: 0, userInfo: ["message": "No refresh token, please logout and login again"])
+            completion(.failure(nsError))
+            return
+        }
+        authenticationService.login(refreshToken: refreshToken) {[weak self] result in
+            guard let self else {
+                return
+            }
+            switch result {
+            case .success(let validResponse):
+                switch validResponse {
+                case .success(let loginResponse):
+                    loginResponse.save()
+                    fetchSurveyList(completion: completion)
+                case .errorResponse(let errorResponse):
+                    completion(.failure(errorResponse.getError()))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+                
             case .failure(let error):
                 completion(.failure(error))
             }
