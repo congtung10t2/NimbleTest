@@ -35,6 +35,7 @@ final class LoginViewModelTests: XCTestCase {
         let expectation = self.expectation(description: "Test login successful")
         let email = "test@example.com"
         let password = "password"
+        
         loginViewModel.login(email: email, password: password) { result in
             XCTAssertEqual(self.mockTokenManager.getAccessToken(), "dVje4RkXGuuuIULsjscQ-L9Pxc0ZJjS57jqwZsBJtWM")
             XCTAssertEqual(self.mockTokenManager.getRefreshToken(), "s1rvoePrIvlX9FuxlGjnEFuj0_Qlmm_y8ZrYa3Xjp0I")
@@ -42,5 +43,12 @@ final class LoginViewModelTests: XCTestCase {
         }
         
         waitForExpectations(timeout: 1.0, handler: nil)
+    }
+    
+    func testUIConfiguration() {
+        XCTAssertEqual(loginViewModel.configuration.components.count, 3)
+        XCTAssertEqual(loginViewModel.configuration.components[0], .email)
+        XCTAssertEqual(loginViewModel.configuration.components[1], .password)
+        XCTAssertEqual(loginViewModel.configuration.components[2], .button(label: "Log in"))
     }
 }

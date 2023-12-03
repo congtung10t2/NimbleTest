@@ -62,7 +62,7 @@ class HomeViewModel {
             case .success(let validResponse):
                 switch validResponse {
                 case .success(let loginResponse):
-                    loginResponse.save()
+                    loginResponse.save(tokenManager: tokenManager)
                     fetchSurveyList(completion: completion)
                 case .errorResponse(let errorResponse):
                     completion(.failure(errorResponse.getError()))

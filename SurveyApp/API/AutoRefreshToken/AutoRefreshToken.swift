@@ -56,8 +56,7 @@ class AutoRefreshToken {
         case .success(let response):
             switch response {
             case .success(let response):
-                response.save()
-                /// Start to auto update for next time
+                response.save(tokenManager: tokenManager)
                 startTokenRefresh()
                 retryCount = 0
             case .failure(let error):

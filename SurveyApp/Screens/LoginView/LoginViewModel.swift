@@ -33,7 +33,7 @@ class LoginViewModel {
         case .success(let response):
             switch response {
             case .success(let response):
-                response.save()
+                response.save(tokenManager: tokenManager)
                 completion(.success(true))
                 
             case .failure(let error):
