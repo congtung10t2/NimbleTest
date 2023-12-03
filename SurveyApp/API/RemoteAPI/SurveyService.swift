@@ -16,9 +16,7 @@ class SurveyServiceImplement: SurveyService {
     var apiProvider: MoyaProvider<ApiRouter>
     var decoder: JSONDecoder
     
-    init(provider: MoyaProvider<ApiRouter> = MoyaProvider<ApiRouter>(stubClosure: { target in
-        return .immediate
-    }),
+    init(provider: MoyaProvider<ApiRouter> = MoyaProvider<ApiRouter>(),
          decoder: JSONDecoder = JSONDecoder()) {
         self.apiProvider = provider
         self.decoder = decoder
