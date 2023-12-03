@@ -8,6 +8,17 @@ For demo purpose, we do not have server yet so I use a configuration inside app 
 
 App integrated pull to refresh and simple local cache as well.
 
+Currently, App integrate auto refresh token by expiration time. We can also base on the backend code to refresh it during fetching survey but I didn't implement it yet.
+
+For testing purpose, we can tap on avatar in home screen to logout.
+
+This Project is using Moya for mocking networking layer and api request. 
+https://github.com/Moya/Moya
+
+Keychain for add/remove keychain easier.
+https://github.com/evgenyneu/keychain-swift
+
+
 ## Environment Setup
 
 Follow these steps to set up the development environment for the project.
