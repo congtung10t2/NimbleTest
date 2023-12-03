@@ -22,6 +22,13 @@ class BaseViewController: UIViewController {
         return logoView
     }()
     
+    let logoContentStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 24
+        return stackView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -69,13 +76,14 @@ class BaseViewController: UIViewController {
             make.bottom.equalTo(contentStackView.snp.top)
             make.centerX.equalToSuperview()
         }
+        logoView.addSubview(logoContentStackView)
+        logoContentStackView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
         let imageView = UIImageView(image: UIImage(named: "ic-logo"))
         imageView.contentMode =  .scaleAspectFit
         imageView.clipsToBounds = true
-        logoView.addSubview(imageView)
-        imageView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+        logoContentStackView.addArrangedSubview(imageView)
     }
     
     func addBackground(){
