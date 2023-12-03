@@ -33,11 +33,7 @@ class LoginViewModel {
         case .success(let response):
             switch response {
             case .success(let response):
-                let accessToken = response.data.attributes.accessToken
-                let refreshToken = response.data.attributes.refreshToken
-                let expiresIn = TimeInterval(response.data.attributes.expiresIn)
-                let createdAt = TimeInterval(response.data.attributes.createdAt)
-                tokenManager.saveTokens(accessToken: accessToken, refreshToken: refreshToken, expiresIn: expiresIn, createdAt: createdAt)
+                response.save()
                 completion(.success(true))
                 
             case .failure(let error):
