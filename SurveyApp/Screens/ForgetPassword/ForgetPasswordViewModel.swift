@@ -15,6 +15,11 @@ class ForgetPasswordViewModel {
     }
     
     func forgetPassword(email: String, completion: @escaping (Result<String, Error>) -> Void) {
+        guard !email.isEmpty else {
+            let nsError = NSError(domain: "login", code: 0, userInfo: ["message": "Email is empty"])
+            completion(.failure(nsError))
+            return
+        }
         self.authenticationService.forgetPassword(email: email) { result in
             switch result {
             case .success(let response):
