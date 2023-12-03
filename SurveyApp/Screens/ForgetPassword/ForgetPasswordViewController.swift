@@ -10,6 +10,17 @@ import UIKit
 class ForgetPasswordViewController: BaseViewController {
     let viewModel: ForgetPasswordViewModel
     var emailTextField: UITextField!
+    private let instructionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Enter your email to receive instructions for resetting your password."
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.textColor = .white
+        label.alpha = 0.7
+        label.font = .systemFont(ofSize: 17)
+        return label
+    }()
+    
     init(viewModel: ForgetPasswordViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -51,6 +62,15 @@ class ForgetPasswordViewController: BaseViewController {
         }
         addDimView()
         hideLoading()
+        addInstructionText()
+    }
+    
+    func addInstructionText() {
+        logoContentStackView.addArrangedSubview(instructionLabel)
+        instructionLabel.snp.makeConstraints { make in
+            make.leading.equalTo(view.snp.leading).offset(24)
+            make.trailing.equalTo(view.snp.trailing).inset(24)
+        }
     }
     
     @objc func resetTapped() {
