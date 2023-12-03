@@ -12,6 +12,7 @@ class HomeViewModel {
     private var surveyService: SurveyService
     private var tokenManager: TokenManaging
     private var authenticationService: AuthenticationService
+    private let cacheFile = "surveyList"
     
     init(tokenManager: TokenManaging = TokenManager.shared,
          surveyService: SurveyService = SurveyServiceImplement(),
@@ -27,6 +28,7 @@ class HomeViewModel {
             case .success(let response):
                 switch response {
                 case .success(let surveyList):
+                    
                     completion(.success(surveyList.data.map { OnboardingPage(survey: $0) }))
                 case .failure(let error):
                     completion(.failure(error))
@@ -41,6 +43,20 @@ class HomeViewModel {
     
     func clearOldTokenData() {
         tokenManager.clearTokens()
+        clearCacheFile()
+    }
+    
+    func clearCacheFile() {
+        CacheManager.clearCache()
+    }
+    
+    func saveDataToCache(pages: [OnboardingPage]) {
+        CacheManager.removeCacheFile(fileName: cacheFile)
+        CacheManager.saveDataToCache(pages, fileName: cacheFile)
+    }
+    
+    func loadDataFromCache() -> [OnboardingPage]? {
+        return CacheManager.loadDataFromCache([OnboardingPage].self, fileName: cacheFile)
     }
     
     func logout(completion: @escaping (Result<Bool, Error>) -> Void) {

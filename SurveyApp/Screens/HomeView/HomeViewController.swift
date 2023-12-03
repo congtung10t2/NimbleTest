@@ -53,10 +53,11 @@ class HomeViewController: UIViewController {
     }()
     
     private let dimView: UIView = {
-        let blurView = UIView()
-        blurView.backgroundColor = .black
-        blurView.alpha = 0.2
-        return blurView
+        let dimView = UIView()
+        dimView.backgroundColor = .black
+        dimView.alpha = 0.2
+        dimView.isHidden = true
+        return dimView
     }()
     
     private var isRefreshing = false
@@ -81,11 +82,16 @@ class HomeViewController: UIViewController {
     }
     
     func setupData() {
-        showLoading()
-        fetchData()
+        if let cache = viewModel.loadDataFromCache() {
+            self.reloadData(pages: cache)
+        } else {
+            showLoading()
+            fetchData()
+        }
     }
     
     func fetchData() {
+        self.viewModel.clearCacheFile()
         viewModel.fetchSurveyList { [weak self] result in
             guard let self else {
                 return
@@ -93,6 +99,7 @@ class HomeViewController: UIViewController {
             self.hideLoading()
             switch result {
             case .success(let pages):
+                self.viewModel.saveDataToCache(pages: pages)
                 self.reloadData(pages: pages)
             case .failure(let error):
                 guard let message = (error as? NSError)?.userInfo["message"] else {
