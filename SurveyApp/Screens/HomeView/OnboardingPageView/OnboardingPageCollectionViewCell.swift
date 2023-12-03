@@ -11,13 +11,13 @@ import Kingfisher
 
 class OnboardingPageCollectionViewCell: UICollectionViewCell {
     
-    private lazy var coverImageView: UIImageView = {
+    private let coverImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    private lazy var titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = ""
         label.textColor = .white
@@ -26,7 +26,7 @@ class OnboardingPageCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var descriptionLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = ""
         label.textColor = .white
@@ -36,7 +36,7 @@ class OnboardingPageCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var contentStackView: UIStackView = {
+    private let contentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16

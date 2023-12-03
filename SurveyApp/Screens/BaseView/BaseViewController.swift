@@ -10,11 +10,16 @@ import SnapKit
 
 class BaseViewController: UIViewController {
     
-    lazy var contentStackView: UIStackView = {
+    let contentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 20
         return stackView
+    }()
+    
+    private let logoView: UIView = {
+        let logoView = UIView()
+        return logoView
     }()
     
     override func viewDidLoad() {
@@ -24,8 +29,8 @@ class BaseViewController: UIViewController {
     
     private func setupUI() {
         addBackground()
-        addLogo()
         addContentView()
+        addLogo()
     }
     
     private let loadingIndicator: UIActivityIndicatorView = {
@@ -54,17 +59,22 @@ class BaseViewController: UIViewController {
     }
     
     func addLogo() {
+        view.addSubview(logoView)
+        logoView.snp.makeConstraints { make in
+            if #available(iOS 11.0, *) {
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            } else {
+                make.top.equalToSuperview()
+            }
+            make.bottom.equalTo(contentStackView.snp.top)
+            make.centerX.equalToSuperview()
+        }
         let imageView = UIImageView(image: UIImage(named: "ic-logo"))
         imageView.contentMode =  .scaleAspectFit
         imageView.clipsToBounds = true
-        view.addSubview(imageView)
+        logoView.addSubview(imageView)
         imageView.snp.makeConstraints { make in
-            if #available(iOS 11.0, *) {
-                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(109)
-            } else {
-                make.top.equalToSuperview().offset(109)
-            }
-            make.centerX.equalToSuperview()
+            make.center.equalToSuperview()
         }
     }
     
